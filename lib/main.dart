@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_ecommerec/core/helper_function/on_generate_routes.dart';
 
 import 'features/splash/presentation/views/splash_view.dart';
 
@@ -12,11 +13,14 @@ class FruitsHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fruits Hub',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.blue
+        ),
       ),
-      home: SplashView(),
+      onGenerateRoute:onGenerateRoute,
+      initialRoute: SplashView.routeName,
     );
   }
 }

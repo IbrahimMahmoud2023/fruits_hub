@@ -94,3 +94,11 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/fruits_icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter_asset_generator: ^1.2.0
+
+flutter_assets:
+    - assets_path: assets/images/
+    - output_path : lib/core/utils
+    - file_name : app_images.dart
+    - field_prefix:
