@@ -11,12 +11,12 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-
   @override
   void initState() {
     executeNavigation();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,11 +24,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment:
+              Localizations.localeOf(context).languageCode == 'ar'
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
           children: [Image.asset(Assets.imagesPlant, height: 200)],
         ),
         Image.asset(Assets.imagesLogo, width: 200, height: 200),
-        Image.asset(Assets.imagesSplashCircle,fit: BoxFit.fill,),
+        Image.asset(Assets.imagesSplashCircle, fit: BoxFit.fill),
       ],
     );
   }
@@ -37,7 +40,5 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
     });
-
-    }
   }
-
+}
