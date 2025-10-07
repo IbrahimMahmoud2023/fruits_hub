@@ -40,6 +40,7 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
     fontFamily: 'Cairo',
   );
+
   static const TextStyle bold13 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.bold,
