@@ -26,8 +26,10 @@ class FruitsHub extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Cairo',
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blue
+          backgroundColor: Colors.blue,
+
         ),
       ),
       onGenerateRoute:onGenerateRoute,
