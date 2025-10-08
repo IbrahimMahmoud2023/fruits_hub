@@ -6,7 +6,11 @@ class Assets {
   static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
   static const String fontsCairoSemiBold = 'assets/fonts/Cairo-SemiBold.ttf';
+  static const String imagesAppleIcon = 'assets/images/apple_icon.png';
+  static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
   static const String imagesFruitsIcon = 'assets/images/fruits_icon.png';
+  static const String imagesGoogleIcon = 'assets/images/google_icon.png';
+  static const String imagesIconCheck = 'assets/images/icon_check.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesPageViewItem1BackgroundImage = 'assets/images/page_view_item1_background_image.png';
   static const String imagesPageViewItem1Image = 'assets/images/page_view_item1_image.png';

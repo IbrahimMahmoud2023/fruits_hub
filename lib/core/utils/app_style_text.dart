@@ -19,6 +19,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     fontFamily: 'Cairo',
   );
+  static const TextStyle semibold16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Cairo',
+  );
 
   // Body / Small / Regular
   static const TextStyle regular12 = TextStyle(

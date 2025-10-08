@@ -4,6 +4,7 @@ class Assets {
 
   static const String imagesFruitsIcon = 'assets/images/fruits_icon.png';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesIconCheck = 'assets/images/icon_check.png';
   static const String imagesPageViewItem1BackgroundImage = 'assets/images/page_view_item1_background_image.png';
   static const String imagesPageViewItem1Image = 'assets/images/page_view_item1_image.png';
   static const String imagesPageViewItem2BackgroundImage = 'assets/images/page_view_item2_background_image.png';
@@ -11,4 +12,7 @@ class Assets {
   static const String imagesPlant = 'assets/images/plant.png';
   static const String imagesSplashCircle = 'assets/images/splash_circle.png';
 
+static const String imagesAppleIcon = 'assets/images/apple_icon.png';
+static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
+static const String imagesGoogleIcon = 'assets/images/google_icon.png';
 }

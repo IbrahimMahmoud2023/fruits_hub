@@ -23,7 +23,7 @@ class CustomTextFormFiled extends StatelessWidget {
           filled: true,
           suffixIcon: iconSuffix,
           hintText: hintText,
-          hintStyle: AppTextStyles.semibold20.copyWith(
+          hintStyle: AppTextStyles.semibold16.copyWith(
             color: Color(0xFF9DA5A6),
           ),
           fillColor: Color(0xFFF9FAFA),
