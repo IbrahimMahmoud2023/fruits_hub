@@ -9,15 +9,25 @@ class CustomTextFormFiled extends StatelessWidget {
     required this.textInputType,
     this.iconSuffix,
     required this.hintText,
+    this.onSaved,
   });
   final TextInputType textInputType;
   final Widget? iconSuffix;
   final String hintText;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: TextFormField(
+        onSaved: onSaved,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'هذا الحقل مطلوب';
+          } else {
+            return null;
+          }
+        },
         keyboardType: textInputType,
         decoration: InputDecoration(
           filled: true,
