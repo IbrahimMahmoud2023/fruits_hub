@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/have_an_account.dart';
+import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/terms_and_condation.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import 'custom_password_field.dart';
 import 'custom_text_form_filed.dart';
 
 class SignupViewBody extends StatefulWidget {
@@ -15,6 +17,7 @@ class SignupViewBody extends StatefulWidget {
 }
 
 class _SignupViewBodyState extends State<SignupViewBody> {
+  bool isTermsChecked = false;
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
@@ -46,16 +49,20 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 textInputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
-              CustomTextFormFiled(
+              PasswordField(
                 onSaved: (value) {
                   password = value!;
                 },
-                textInputType: TextInputType.visiblePassword,
-                hintText: 'كلمه المرور',
-                iconSuffix: Icon(Icons.visibility, color: Color(0xFFCBD0D1)),
               ),
               SizedBox(height: 16),
-              TermsAndCondition(),
+              TermsAndCondition(
+                isChecked: isTermsChecked,
+                onChanged: (value) {
+                  setState(() {
+                    isTermsChecked = value;
+                  });
+                },
+              ),
               SizedBox(height: 42),
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -63,13 +70,23 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 ),
                 child: CustomButton(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                      context.read<SignupCubit>().createUserWithEmailAndPassword(email, password, name);
+                    if (isTermsChecked) {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        context
+                            .read<SignupCubit>()
+                            .createUserWithEmailAndPassword(
+                              email,
+                              password,
+                              name,
+                            );
+                      } else {
+                        setState(() {
+                          autoValidateMode = AutovalidateMode.always;
+                        });
+                      }
                     } else {
-                      setState(() {
-                        autoValidateMode = AutovalidateMode.always;
-                      });
+                      showSnackBar(context, 'يجب الموافقة على الشروط والأحكام أولاً!');
                     }
                   },
                   text: 'إنشاء حساب جديد',

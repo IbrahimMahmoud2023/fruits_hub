@@ -6,15 +6,19 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_style_text.dart';
 
 class TermsAndCondition extends StatelessWidget {
-  const TermsAndCondition({super.key});
-
+  const TermsAndCondition({super.key, required this.isChecked, required this.onChanged});
+  final bool isChecked;
+  final ValueChanged<bool> onChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-          child: CustomCheckBox(),
+          child: CustomCheckBox(
+            value: isChecked,
+            onChanged: onChanged,
+          ),
         ),
 
         Expanded(

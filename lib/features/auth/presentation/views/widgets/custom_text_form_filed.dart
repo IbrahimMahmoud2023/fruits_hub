@@ -9,17 +9,19 @@ class CustomTextFormFiled extends StatelessWidget {
     required this.textInputType,
     this.iconSuffix,
     required this.hintText,
-    this.onSaved,
+    this.onSaved,  this.obscureText  =false,
   });
   final TextInputType textInputType;
   final Widget? iconSuffix;
   final String hintText;
   final void Function(String?)? onSaved;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: TextFormField(
+        obscureText:obscureText ,
         onSaved: onSaved,
         validator: (value) {
           if (value == null || value.isEmpty) {

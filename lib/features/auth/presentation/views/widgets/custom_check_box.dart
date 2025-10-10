@@ -4,37 +4,32 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets.dart';
 
-class CustomCheckBox extends StatefulWidget {
-  const CustomCheckBox({super.key});
 
-  @override
-  State<CustomCheckBox> createState() => _CustomCheckBoxState();
-}
 
-class _CustomCheckBoxState extends State<CustomCheckBox> {
-  bool isChecked = false;
+class CustomCheckBox extends StatelessWidget {
+  final bool value;
+  final ValueChanged<bool> onChanged;
+  const CustomCheckBox({super.key, required this.value, required this.onChanged});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          isChecked = !isChecked;
-        });
+      onTap: (){
+        onChanged(!value);
       },
       child: AnimatedContainer(
         height: 25,
         width: 25,
         duration: Duration(milliseconds: 100),
         decoration: ShapeDecoration(
-          color: isChecked ? AppColors.primaryColor : Colors.white,
+          color: value ? AppColors.primaryColor : Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
             side: BorderSide(
-              color: isChecked ? Colors.transparent : Color(0xFFE1E3E3),
+              color: value ? Colors.transparent : Color(0xFFE1E3E3),
             ),
           ),
         ),
-        child: isChecked
+        child: value
             ? Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: Image.asset(Assets.imagesIconCheck),
