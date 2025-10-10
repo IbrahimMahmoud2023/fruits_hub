@@ -1,17 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/have_an_account.dart';
-import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/social_login_button.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/terms_and_condation.dart';
-
 import '../../../../../constants.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_style_text.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import 'custom_text_form_filed.dart';
-import 'donot_have_an_account.dart';
-import 'or_divider.dart';
+
 
 class SignupViewBody extends StatelessWidget {
 

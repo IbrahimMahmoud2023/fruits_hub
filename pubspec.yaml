@@ -39,6 +39,7 @@ dependencies:
   intl: ^0.20.2
   dots_indicator: ^4.0.1
   shared_preferences: ^2.5.3
+  firebase_core: ^4.1.1
 
 
 dev_dependencies:
@@ -109,7 +110,7 @@ flutter_asset_generator: ^1.2.0
 
 flutter_assets:
     - assets_path: assets/images/
-    - output_path : lib/core/utils/
+    - output_path : lib/core/utils/assets.dart
     - file_name : app_images.dart
     - field_prefix:
 flutter_intl:
