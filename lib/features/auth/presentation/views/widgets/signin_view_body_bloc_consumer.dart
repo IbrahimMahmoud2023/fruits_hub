@@ -13,9 +13,11 @@ class SigninViewBodyBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInCubit, SignInState>(
       listener: (context, state) {
-        if (state is SignInSuccess) {}
+        if (state is SignInSuccess) {
+          showSnackBar(context, 'تم تسجيل الدخول بنجاح', Colors.green);
+        }
         if (state is SignInFailure) {
-          showSnackBar(context, state.errorMessage);
+          showSnackBar(context, state.errorMessage,Colors.red);
         }
       },
       builder: (context, state) {

@@ -13,9 +13,11 @@ class SignUpViewBodyConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
-        if (state is SignupSuccess) {}
+        if (state is SignupSuccess) {
+          showSnackBar(context, 'تم أنشاء حساب بنجاح', Colors.green);
+        }
         if (state is SignupFailure) {
-          showSnackBar(context, state.errorMessage);
+          showSnackBar(context, state.errorMessage, Colors.red);
         }
       },
       builder: (context, state) {

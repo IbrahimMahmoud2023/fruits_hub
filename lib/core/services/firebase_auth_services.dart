@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../errors/execption.dart';
 
@@ -68,4 +69,26 @@ class FirebaseAuthServices {
       throw CustomException(message: 'حدث خطأ، من فضلك حاول مرة أخرى.');
     }
   }
+
+
+  Future<User> signInWithGoogle() async {
+    try {
+
+      final GoogleSignInAccount? googleUser = await GoogleSignIn.instance.authenticate();
+
+      if (googleUser == null) {
+        throw Exception('فشل في تسجيل الدخول مع Google');
+      }
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
+      return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
+    } catch (e) {
+      throw Exception('خطأ في تسجيل الدخول: $e');
+    }
+  }
+
 }
+
+

@@ -75,7 +75,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       if (isTermsChecked) {
                         context.read<SignupCubit>().createUserWithEmailAndPassword(email, password, name);
                       }else {
-                        showSnackBar(context, 'يجب الموافقة على الشروط والأحكام أولاً');
+                        showSnackBar(context, 'يجب الموافقة على الشروط والأحكام أولاً',Colors.red);
                       }
                     } else {
                       setState(() {
