@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_ecommerec/core/services/shared_prefrence_singleton.dart';
-import 'package:fruits_ecommerec/features/auth/presentation/views/login_view.dart';
+import 'package:fruits_ecommerec/features/auth/presentation/views/signin_view.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/assets.dart';
@@ -43,7 +43,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     bool onBoardingSeen = Prefs.getBool(kOnBoardingSeen) ?? false;
     Future.delayed(const Duration(seconds: 3), () {
       if (onBoardingSeen) {
-        Navigator.pushReplacementNamed(context, LoginView.routeName);
+        Navigator.pushReplacementNamed(context, SignInView.routeName);
       }else{
         Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
       }

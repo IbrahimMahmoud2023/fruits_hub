@@ -6,7 +6,7 @@ import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/core/widgets/custom_button.dart';
 import 'package:fruits_ecommerec/features/on_boarding/presentation/views/widgtes/on_boarding_page_view.dart';
 
-import '../../../../auth/presentation/views/login_view.dart';
+import '../../../../auth/presentation/views/signin_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -65,7 +65,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 text: 'أبدأ ألان',
                 onPressed: () {
                   Prefs.setBool(kOnBoardingSeen, true);
-              Navigator.pushReplacementNamed(context, LoginView.routeName);
+              Navigator.pushReplacementNamed(context, SignInView.routeName);
             }),
           ),
         ),

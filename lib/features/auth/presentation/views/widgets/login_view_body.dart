@@ -10,8 +10,8 @@ import '../../../../../core/utils/assets.dart';
 import 'custom_text_form_filed.dart';
 import 'donot_have_an_account.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatelessWidget {
+  const SignInViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

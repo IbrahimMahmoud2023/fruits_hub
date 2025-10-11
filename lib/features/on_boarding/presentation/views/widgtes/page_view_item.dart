@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
-import 'package:fruits_ecommerec/features/auth/presentation/views/login_view.dart';
+import 'package:fruits_ecommerec/features/auth/presentation/views/signin_view.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/services/shared_prefrence_singleton.dart';
@@ -49,7 +49,7 @@ class PageViewItem extends StatelessWidget {
                   child: GestureDetector(
                     onTap: (){
                       Prefs.setBool(kOnBoardingSeen, true);
-                      Navigator.pushReplacementNamed(context, LoginView.routeName);
+                      Navigator.pushReplacementNamed(context, SignInView.routeName);
                     },
                     child: Padding(padding: const EdgeInsets.all(16.0), child: Text('تخط',style: AppTextStyles.regular13.copyWith(
                       color: Color(0xFF949D9E)
