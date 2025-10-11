@@ -7,7 +7,6 @@ import 'package:fruits_ecommerec/core/services/git_it_services.dart';
 import 'package:fruits_ecommerec/core/services/shared_prefrence_singleton.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/simple_block_observer.dart';
-
 import 'features/splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';

@@ -57,9 +57,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               SizedBox(height: 16),
               TermsAndCondition(
                 isChecked: isTermsChecked,
-                onChanged: (value) {
+                onChanged: (value){
                   setState(() {
-                    isTermsChecked = value;
+                    isTermsChecked= value;
                   });
                 },
               ),
@@ -70,23 +70,17 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 ),
                 child: CustomButton(
                   onPressed: () {
-                    if (isTermsChecked) {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        context
-                            .read<SignupCubit>()
-                            .createUserWithEmailAndPassword(
-                              email,
-                              password,
-                              name,
-                            );
-                      } else {
-                        setState(() {
-                          autoValidateMode = AutovalidateMode.always;
-                        });
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      if (isTermsChecked) {
+                        context.read<SignupCubit>().createUserWithEmailAndPassword(email, password, name);
+                      }else {
+                        showSnackBar(context, 'يجب الموافقة على الشروط والأحكام أولاً');
                       }
                     } else {
-                      showSnackBar(context, 'يجب الموافقة على الشروط والأحكام أولاً!');
+                      setState(() {
+                        autoValidateMode = AutovalidateMode.always;
+                      });
                     }
                   },
                   text: 'إنشاء حساب جديد',
@@ -101,3 +95,5 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 }
+
+
