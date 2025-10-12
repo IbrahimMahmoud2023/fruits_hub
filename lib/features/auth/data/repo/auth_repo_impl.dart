@@ -62,24 +62,22 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthServices.signInWithGoogle();
       return right(UserModel.fromFirebaseUser(user));
-      } catch (e) {
+    } catch (e) {
       log(
         'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()} ',
       );
       return left(
         ServerFailure(errorMessage: 'there was an error, please tyr again'),
       );
-
     }
-
   }
+
   @override
   Future<Either<Failures, UserEntity>> signInWithFaceBook() async {
     try {
       var user = await firebaseAuthServices.signInWithFacebook();
       return right(UserModel.fromFirebaseUser(user));
-
-      } catch (e) {
+    } catch (e) {
       log(
         'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()} ',
       );
@@ -87,7 +85,21 @@ class AuthRepoImpl extends AuthRepo {
       return left(
         ServerFailure(errorMessage: 'there was an error, please tyr again'),
       );
+    }
+  }
 
+  @override
+  Future<Either<Failures, UserEntity>> signInWithApple() async {
+    try {
+      var user = await firebaseAuthServices.signInWithApple();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log(
+        'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()} ',
+      );
+      return left(
+        ServerFailure(errorMessage: 'there was an error, please tyr again'),
+      );
     }
   }
 }
