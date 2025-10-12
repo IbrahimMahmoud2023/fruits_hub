@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
@@ -105,13 +107,13 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 text: 'تسجيل بواسطه فيس بوك',
               ),
               SizedBox(height: 16),
-              SocialLoginButton(
+             Platform.isIOS ? SocialLoginButton(
                 onPressed: (){
                   context.read<SignInCubit>().signInWithApple();
                 },
                 image: Assets.imagesAppleIcon,
                 text: 'تسجيل بواسطه أبل',
-              ),
+              ):SizedBox(),
             ],
           ),
         ),
