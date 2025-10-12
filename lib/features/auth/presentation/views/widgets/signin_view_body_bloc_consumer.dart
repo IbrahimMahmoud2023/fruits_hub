@@ -4,7 +4,7 @@ import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_s
 import '../../../../../core/widgets/custom_progress_hud.dart';
 import '../../cubits/signin_cubit/sign_in_cubit.dart';
 import '../../cubits/signin_cubit/sign_in_state.dart';
-import 'login_view_body.dart';
+import 'sign_in_view_body.dart';
 
 class SigninViewBodyBlocConsumer extends StatelessWidget {
   const SigninViewBodyBlocConsumer({super.key});

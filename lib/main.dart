@@ -7,6 +7,7 @@ import 'package:fruits_ecommerec/core/services/git_it_services.dart';
 import 'package:fruits_ecommerec/core/services/shared_prefrence_singleton.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/simple_block_observer.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
@@ -17,6 +18,9 @@ void main() async {
   setup();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await GoogleSignIn.instance.initialize(
+    serverClientId: '960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com',
+  );
   runApp(const FruitsHub());
 }
 
