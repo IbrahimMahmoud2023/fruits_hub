@@ -65,7 +65,7 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity =await getUserData(uid: user.uid);
+      var userEntity = await getUserData(uid: user.uid);
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(errorMessage: e.toString()));
@@ -85,6 +85,16 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthServices.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
+      var isUserExit = await dataBaseServices.checkIfDataExit(
+        path: BackEndEndPoint.kIfDataExit,
+        documentId: user.uid,
+      );
+      if (isUserExit) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
+
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
@@ -148,7 +158,6 @@ class AuthRepoImpl extends AuthRepo {
     var userData = await dataBaseServices.getData(
       path: BackEndEndPoint.kGetUserData,
       documentId: uid,
-
     );
     return UserModel.fromJson(json: userData);
   }
