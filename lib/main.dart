@@ -14,15 +14,17 @@ import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = SimpleBlocObserver();
-  setup();
-  await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Bloc.observer = SimpleBlocObserver();
+  await Prefs.init();
   await GoogleSignIn.instance.initialize(
     serverClientId: '960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com',
   );
+  setup();
+
   runApp(const FruitsHub());
 }
+
 
 class FruitsHub extends StatelessWidget {
   const FruitsHub({super.key});

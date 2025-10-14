@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'data_base_services.dart';
 
 class FireStoreServices implements DataBaseServices {
@@ -8,7 +7,21 @@ class FireStoreServices implements DataBaseServices {
   Future<void> addData({
     required String path,
     required Map<String, dynamic> data,
+    String? documentId,
   }) async {
-    await fireStore.collection(path).add(data);
+    if (documentId != null) {
+      await fireStore.collection(path).doc(documentId).set(data);
+    } else {
+      await fireStore.collection(path).add(data);
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> getData({
+    required String path,
+    required String documentId,
+  }) async {
+    var data = await fireStore.collection(path).doc(documentId).get();
+    return data.data() as Map<String, dynamic>;
   }
 }
