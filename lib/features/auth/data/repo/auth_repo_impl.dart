@@ -113,6 +113,15 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthServices.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
+      var isUserExit = await dataBaseServices.checkIfDataExit(
+        path: BackEndEndPoint.kIfDataExit,
+        documentId: user.uid,
+      );
+      if (isUserExit) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
@@ -132,6 +141,15 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthServices.signInWithApple();
       var userEntity = UserModel.fromFirebaseUser(user);
+      var isUserExit = await dataBaseServices.checkIfDataExit(
+        path: BackEndEndPoint.kIfDataExit,
+        documentId: user.uid,
+      );
+      if (isUserExit) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);

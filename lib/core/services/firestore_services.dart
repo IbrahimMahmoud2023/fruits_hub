@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruits_ecommerec/core/utils/backend_point.dart';
-import 'package:fruits_ecommerec/features/auth/domain/entites/user_entity.dart';
 import 'data_base_services.dart';
 
 class FireStoreServices implements DataBaseServices {
