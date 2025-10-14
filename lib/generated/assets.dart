@@ -8,9 +8,13 @@ class Assets {
   static const String fontsCairoSemiBold = 'assets/fonts/Cairo-SemiBold.ttf';
   static const String imagesAppleIcon = 'assets/images/apple_icon.png';
   static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
+  static const String imagesFliterIcon = 'assets/images/fliter_icon.png';
   static const String imagesFruitsIcon = 'assets/images/fruits_icon.png';
   static const String imagesGoogleIcon = 'assets/images/google_icon.png';
   static const String imagesIconCheck = 'assets/images/icon_check.png';
+  static const String imagesIconNotification = 'assets/images/icon_notification.png';
+  static const String imagesIconSearch = 'assets/images/icon_search.png';
+  static const String imagesImageProfile = 'assets/images/image_profile.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesPageViewItem1BackgroundImage = 'assets/images/page_view_item1_background_image.png';
   static const String imagesPageViewItem1Image = 'assets/images/page_view_item1_image.png';

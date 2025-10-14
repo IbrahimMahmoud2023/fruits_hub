@@ -10,9 +10,13 @@ class Assets {
   static const String imagesPageViewItem2BackgroundImage = 'assets/images/page_view_item2_background_image.png';
   static const String imagesPageViewItem2Image = 'assets/images/page_view_item2_image.png';
   static const String imagesPlant = 'assets/images/plant.png';
+  static const String imagesIconNotification = 'assets/images/icon_notification.png';
   static const String imagesSplashCircle = 'assets/images/splash_circle.png';
-
+  static const String imagesImageProfile = 'assets/images/image_profile.png';
 static const String imagesAppleIcon = 'assets/images/apple_icon.png';
 static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
 static const String imagesGoogleIcon = 'assets/images/google_icon.png';
+
+  static const String imagesFilterIcon = 'assets/images/fliter_icon.png';
+  static const String imagesIconSearch = 'assets/images/icon_search.png';
 }
