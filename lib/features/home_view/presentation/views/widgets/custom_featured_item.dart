@@ -37,7 +37,7 @@ class CustomFeaturedItem extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 33),
+                  padding: const EdgeInsets.only(right: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
