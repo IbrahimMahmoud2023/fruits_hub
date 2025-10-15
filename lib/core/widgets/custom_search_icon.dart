@@ -34,10 +34,7 @@ class CustomSearchIcon extends StatelessWidget {
           prefixIcon: SizedBox(
             width: 20,
             child: Center(
-              child: Image.asset(
-                Assets.imagesIconSearch,
-                color: AppColors.primaryColor,
-              ),
+              child: Icon(Icons.search_outlined,color: AppColors.primaryColor,),
             ),
           ),
           fillColor: Colors.white,

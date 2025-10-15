@@ -8,6 +8,7 @@ class Assets {
   static const String fontsCairoSemiBold = 'assets/fonts/Cairo-SemiBold.ttf';
   static const String imagesAppleIcon = 'assets/images/apple_icon.png';
   static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
+  static const String imagesFeaturedItemBackground = 'assets/images/featured_item_background.png';
   static const String imagesFliterIcon = 'assets/images/fliter_icon.png';
   static const String imagesFruitsIcon = 'assets/images/fruits_icon.png';
   static const String imagesGoogleIcon = 'assets/images/google_icon.png';
@@ -22,5 +23,6 @@ class Assets {
   static const String imagesPageViewItem2Image = 'assets/images/page_view_item2_image.png';
   static const String imagesPlant = 'assets/images/plant.png';
   static const String imagesSplashCircle = 'assets/images/splash_circle.png';
+  static const String imagesTestImag = 'assets/images/test_imag.png';
 
 }

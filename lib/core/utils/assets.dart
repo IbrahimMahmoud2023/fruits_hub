@@ -19,4 +19,6 @@ static const String imagesGoogleIcon = 'assets/images/google_icon.png';
 
   static const String imagesFilterIcon = 'assets/images/fliter_icon.png';
   static const String imagesIconSearch = 'assets/images/icon_search.png';
+  static const String imagesTestImag = 'assets/images/test_imag.png';
+  static const String imagesFeaturedItemBackground = 'assets/images/featured_item_background.png';
 }

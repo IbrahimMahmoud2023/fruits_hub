@@ -3,6 +3,7 @@ import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/c
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_search_icon.dart';
+import 'custom_featured_item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -22,6 +23,10 @@ class HomeViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: CustomSearchIcon(),
           ),
+          SizedBox(
+            height: 12,
+          ),
+          CustomFeaturedItem(),
         ],
       ),
     ),
