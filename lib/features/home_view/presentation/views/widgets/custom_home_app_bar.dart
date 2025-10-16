@@ -9,20 +9,17 @@ class CustomHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
-      child: ListTile(
-        leading: Image.asset(Assets.imagesImageProfile),
-        title: Text(
-          'صباح الخير !..',
-          style: AppTextStyles.semibold16.copyWith(color: Color(0xFFA8AFB0)),
-        ),
-        subtitle: Text(
-          'أحمد مصطفي',
-          style: AppTextStyles.bold16.copyWith(color: Color(0xFF121313)),
-        ),
-        trailing: NotificationWidget(),
+    return ListTile(
+      leading: Image.asset(Assets.imagesImageProfile),
+      title: Text(
+        'صباح الخير !..',
+        style: AppTextStyles.semibold16.copyWith(color: Color(0xFFA8AFB0)),
       ),
+      subtitle: Text(
+        'أحمد مصطفي',
+        style: AppTextStyles.bold16.copyWith(color: Color(0xFF121313)),
+      ),
+      trailing: NotificationWidget(),
     );
   }
 }

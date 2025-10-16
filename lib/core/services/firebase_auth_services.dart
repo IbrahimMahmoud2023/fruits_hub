@@ -154,4 +154,8 @@ class FirebaseAuthServices {
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
     return (await FirebaseAuth.instance.signInWithCredential(oauthCredential)).user!;
   }
+
+  bool isLoggedIn(){
+    return FirebaseAuth.instance.currentUser != null;
+  }
 }

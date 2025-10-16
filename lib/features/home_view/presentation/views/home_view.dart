@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
-      body: HomeViewBody(),
+      body: SafeArea(child: HomeViewBody()),
     );
   }
 }
