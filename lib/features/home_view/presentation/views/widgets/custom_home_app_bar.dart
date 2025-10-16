@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../../../core/widgets/notification_widget.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -20,8 +21,10 @@ class CustomHomeAppBar extends StatelessWidget {
           'أحمد مصطفي',
           style: AppTextStyles.bold16.copyWith(color: Color(0xFF121313)),
         ),
-        trailing: Image.asset(Assets.imagesIconNotification),
+        trailing: NotificationWidget(),
       ),
     );
   }
 }
+
+

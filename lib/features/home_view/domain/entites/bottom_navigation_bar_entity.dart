@@ -23,7 +23,7 @@ class BottomNavigationBarEntity {
     BottomNavigationBarEntity(
         inActiveImage: Assets.outlineShoppingCart,
         activeImage: Assets.boldShoppingCart,
-        name: 'سله التسويق'
+        name: 'سله التسوق'
     ),
     BottomNavigationBarEntity(
         inActiveImage: Assets.outlineUser,

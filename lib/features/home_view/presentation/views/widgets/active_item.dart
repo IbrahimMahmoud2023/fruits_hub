@@ -9,32 +9,29 @@ class ActiveItem extends StatelessWidget {
 final String image ,name;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: Center(
-        child: Container(
-          padding: EdgeInsets.only(left: 16),
-          decoration: ShapeDecoration(
-            color: Color(0xFFEEEEEE),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
+    return Center(
+      child: Container(
+        padding: EdgeInsets.only(left: 16),
+        decoration: ShapeDecoration(
+          color: Color(0xFFEEEEEE),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
 
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 30,
-                height: 30,
-                decoration: ShapeDecoration(
-                  color: Color(0xFF1B5E37),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
-                ),
-                child: Center(child: Image.asset(image)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 30,
+              height: 30,
+              decoration: ShapeDecoration(
+                color: Color(0xFF1B5E37),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
               ),
-              SizedBox(width: 4,),
-              Text(name , style: AppTextStyles.semibold13.copyWith(color: AppColors.primaryColor),)
-            ],
-          ),
+              child: Center(child: Image.asset(image)),
+            ),
+            SizedBox(width: 4,),
+            Text(name , style: AppTextStyles.semibold13.copyWith(color: AppColors.primaryColor),)
+          ],
         ),
       ),
     );
