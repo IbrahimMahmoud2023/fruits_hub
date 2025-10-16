@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
 
+  static const String boldElement3 = 'assets/images/bold/element-3.png';
+  static const String boldHome = 'assets/images/bold/home.png';
+  static const String boldShoppingCart = 'assets/images/bold/shopping-cart.png';
+  static const String boldUser = 'assets/images/bold/user.png';
   static const String fontsCairoBold = 'assets/fonts/Cairo-Bold.ttf';
   static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
@@ -24,5 +28,9 @@ class Assets {
   static const String imagesPlant = 'assets/images/plant.png';
   static const String imagesSplashCircle = 'assets/images/splash_circle.png';
   static const String imagesTestImag = 'assets/images/test_imag.png';
+  static const String outlineElement3 = 'assets/images/outline/element-3.png';
+  static const String outlineHome = 'assets/images/outline/home.png';
+  static const String outlineShoppingCart = 'assets/images/outline/shopping-cart.png';
+  static const String outlineUser = 'assets/images/outline/user.png';
 
 }
