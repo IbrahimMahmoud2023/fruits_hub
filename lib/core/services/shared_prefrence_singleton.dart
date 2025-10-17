@@ -14,11 +14,14 @@ class Prefs {
   }
 
   static bool getBool(String key) {
-   return sharedPreferences.getBool(key) ?? false;
+    return sharedPreferences.getBool(key) ?? false;
   }
 
-  static setString(String key, String value) async{
+  static setString(String key, String value) async {
     await sharedPreferences.setString(key, value);
+  }
 
+  static getString(String key) {
+    return sharedPreferences.getString(key);
   }
 }
