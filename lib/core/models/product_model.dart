@@ -1,8 +1,8 @@
-import 'dart:io';
 
 import 'package:fruits_ecommerec/core/models/review_model.dart';
 
 import '../entites/product_entity.dart';
+import '../helper_function/get_avg_rating.dart';
 
 
 class ProductModel {
@@ -11,7 +11,7 @@ class ProductModel {
   final String productCode;
   final num price;
   final bool isFeatured;
-  final File image;
+
 
   String? imageUrl;
   final num sellingCount;
@@ -21,18 +21,18 @@ class ProductModel {
   final int numberOfCalories;
   final int unitsAmount;
 
-  final num avgRating = 0;
+  final num avgRating ;
   final num countRating = 0;
   final List<ReviewModel> reviews;
 
   ProductModel({
+    required this.avgRating,
     required this.reviews,
     required this.expirationsOfMonths,
      this.isOrganic = false,
     required this.numberOfCalories,
     required this.sellingCount,
     required this.unitsAmount,
-    required this.image,
     required this.productName,
     required this.description,
     required this.productCode,
@@ -45,12 +45,12 @@ class ProductModel {
     ProductEntity productEntity, addProductInputEntity,
   ) {
     return ProductModel(
+      avgRating: productEntity.avgRating,
       reviews:  addProductInputEntity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
       expirationsOfMonths: addProductInputEntity.expirationsOfMonths,
       isOrganic: addProductInputEntity.isOrganic,
       numberOfCalories: addProductInputEntity.numberOfCalories,
       unitsAmount: addProductInputEntity.unitsAmount,
-      image: addProductInputEntity.image,
       productName: addProductInputEntity.productName,
       description: addProductInputEntity.description,
       productCode: addProductInputEntity.productCode,
@@ -64,6 +64,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json){
     return ProductModel(
+      avgRating: getAvgRating(json['reviews']),
       expirationsOfMonths: json['expirationsOfMonths'],
       isOrganic: json['isOrganic'],
       numberOfCalories: json['numberOfCalories'],
@@ -72,7 +73,6 @@ class ProductModel {
       description: json['description'],
       productCode: json['productCode'],
       sellingCount: json['sellingCount'],
-      image: File(json['image']),
       price: json['price'],
       isFeatured: json['isFeatured'],
       imageUrl: json['imageUrl'],
@@ -117,4 +117,6 @@ class ProductModel {
       'reviews': reviews.map((e) => e.toJson()).toList(),
     };
   }
+
+
 }

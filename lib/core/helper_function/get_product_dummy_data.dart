@@ -1,8 +1,7 @@
-import 'dart:io';
+
 
 import 'package:fruits_ecommerec/core/entites/product_entity.dart';
 
-import '../entites/review_entity.dart';
 
 ProductEntity getDummyProduct() {
   return ProductEntity(
@@ -11,7 +10,6 @@ ProductEntity getDummyProduct() {
     productCode: 'APL001',
     price: 25.5,
     isFeatured: true,
-    image: File('assets/images/apple.png'),
     expirationsOfMonths: 3,
     isOrganic: true,
     numberOfCalories: 52,
