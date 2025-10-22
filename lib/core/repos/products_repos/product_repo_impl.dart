@@ -11,16 +11,34 @@ class ProductRepoImpl extends ProductRepo {
   ProductRepoImpl({required this.dataBaseServices});
 
   @override
-  Future<Either<Failures, List<ProductModel>>> getBestSellingProducts() {
-    // TODO: implement getBestSellingProducts
-    throw UnimplementedError();
+  Future<Either<Failures, List<ProductEntity>>> getBestSellingProducts() async{
+    try {
+      var data =
+          await dataBaseServices.getData(path: BackEndEndPoint.kGetProduct,
+          query: {
+            'limit' :10,
+            'orderBy' : 'sellingCount',
+            'descending' : true
+          }
+          )
+      as List<Map<String, dynamic>>;
+
+      // تحويل Model إلى Entity
+      List<ProductEntity> products = data
+          .map<ProductEntity>((e) => ProductModel.fromJson(e).toEntity())
+          .toList();
+
+      return Right(products);
+    } catch (e) {
+      return Left(ServerFailure(errorMessage: 'failed to get products'));
+    }
   }
 
   @override
   Future<Either<Failures, List<ProductEntity>>> getProduct() async {
     try {
       var data =
-          await dataBaseServices.getData(path: BackEndEndPoint.kGetProduct)
+          await dataBaseServices.getData(path: BackEndEndPoint.kGetProduct,)
               as List<Map<String, dynamic>>;
 
       // تحويل Model إلى Entity
