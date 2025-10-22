@@ -1,3 +1,5 @@
+import 'package:fruits_ecommerec/core/repos/products_repos/product_repo.dart';
+import 'package:fruits_ecommerec/core/repos/products_repos/product_repo_impl.dart';
 import 'package:fruits_ecommerec/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:fruits_ecommerec/features/auth/domain/repo/auth_repo.dart';
 import 'package:get_it/get_it.dart';
@@ -16,5 +18,8 @@ void setup() {
       firebaseAuthServices: getIt<FirebaseAuthServices>(),
       dataBaseServices: getIt<DataBaseServices>(),
     ),
+  );
+  getIt.registerSingleton<ProductRepo>(
+    ProductRepoImpl(dataBaseServices: getIt<DataBaseServices>()),
   );
 }

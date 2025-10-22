@@ -1,18 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
-import 'package:fruits_ecommerec/core/widgets/fruit_item.dart';
-import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/best_selling_grad_view.dart';
-import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/best_selling_header.dart';
-import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/custom_home_app_bar.dart';
-import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/featured_list_item.dart';
+import 'package:flutter/material.dart' ;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/cubits/products_cubit/products_cubit.dart';
 import '../../../../../core/widgets/custom_search_icon.dart';
-import 'custom_featured_item.dart';
+import '../../../../auth/presentation/views/widgets/best_selling_grad_view_bloc_builder.dart';
+import 'best_selling_grad_view.dart';
+import 'best_selling_header.dart';
+import 'custom_home_app_bar.dart';
+import 'featured_list_item.dart';
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+class HomeViewBody extends StatefulWidget {
+  const HomeViewBody({
+    super.key,
+  });
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+
+  @override
+  void initState() {
+    BlocProvider.of<ProductsCubit>(context).getBestSellingProducts();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,17 +51,16 @@ class HomeViewBody extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: BestSellingHeader(),),
-                 const SizedBox(
-                   height: 8,
-                 )
+                const SizedBox(
+                  height: 8,
+                )
               ],
             ),
           ),
-          BestSellingGradView()
+          BestSellingGradViewBlocBuilder()
         ],
       ),
     );
   }
 }
-
 

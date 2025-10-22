@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_ecommerec/core/services/shared_prefrence_singleton.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/signin_view.dart';
-import 'package:fruits_ecommerec/features/home_view/presentation/views/home_view.dart';
+import 'package:fruits_ecommerec/features/home_view/presentation/views/main_view.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/services/firebase_auth_services.dart';
