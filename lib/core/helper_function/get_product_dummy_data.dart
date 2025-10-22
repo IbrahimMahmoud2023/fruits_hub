@@ -14,7 +14,7 @@ ProductEntity getDummyProduct() {
     isOrganic: true,
     numberOfCalories: 52,
     unitsAmount: 10,
-    imageUrl: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce',
+    imageUrl: null,
     reviews: [],
   );
 }

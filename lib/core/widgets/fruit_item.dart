@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
-import 'package:fruits_ecommerec/core/utils/assets.dart';
+
+
+import '../entites/product_entity.dart';
+import 'custom_networking_image.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
-
+  const FruitItem({super.key, required this.productEntity});
+final ProductEntity productEntity ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,15 +31,21 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Image.asset(Assets.imagesTestImag, width: 100),
+                productEntity.imageUrl != null ?
+                Flexible(child: CustomNetWorkingImage(image: productEntity.imageUrl!))
+                    :Container(
+                  color: Colors.grey,
+                  height: 100,
+                  width: 100,
+                ),
                 SizedBox(height: 24),
                 ListTile(
-                  title: Text('بطيخ', style: AppTextStyles.semibold16),
+                  title: Text(productEntity.productName, style: AppTextStyles.semibold16),
                   subtitle: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '20جنية',
+                          text: '${productEntity.price}جنية',
                           style: AppTextStyles.bold13.copyWith(
                             color: AppColors.secondaryColor,
                           ),
@@ -48,7 +57,7 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'الكيلو',
+                          text: 'الكيلو${productEntity.unitsAmount}',
                           style: AppTextStyles.semibold13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
@@ -69,3 +78,5 @@ class FruitItem extends StatelessWidget {
     );
   }
 }
+
+

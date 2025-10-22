@@ -8,9 +8,13 @@ class BestSellingGradView extends StatelessWidget {
 final List<ProductEntity> products ;
   @override
   Widget build(BuildContext context) {
+
     return SliverGrid.builder(
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        return FruitItem();
+        return FruitItem(
+          productEntity: products[index],
+        );
       },
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
