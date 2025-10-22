@@ -14,6 +14,7 @@ class ProductModel {
   final File image;
 
   String? imageUrl;
+  final num sellingCount;
 
   final int expirationsOfMonths;
   final bool isOrganic;
@@ -29,6 +30,7 @@ class ProductModel {
     required this.expirationsOfMonths,
      this.isOrganic = false,
     required this.numberOfCalories,
+    required this.sellingCount,
     required this.unitsAmount,
     required this.image,
     required this.productName,
@@ -55,7 +57,49 @@ class ProductModel {
       price: addProductInputEntity.price,
       isFeatured: addProductInputEntity.isFeatured,
       imageUrl: addProductInputEntity.imageUrl,
+      sellingCount: addProductInputEntity.sellingCount,
+
     );
+  }
+
+  factory ProductModel.fromJson(Map<String, dynamic> json){
+    return ProductModel(
+      expirationsOfMonths: json['expirationsOfMonths'],
+      isOrganic: json['isOrganic'],
+      numberOfCalories: json['numberOfCalories'],
+      unitsAmount: json['unitsAmount'],
+      productName: json['productName'],
+      description: json['description'],
+      productCode: json['productCode'],
+      sellingCount: json['sellingCount'],
+      image: File(json['image']),
+      price: json['price'],
+      isFeatured: json['isFeatured'],
+      imageUrl: json['imageUrl'],
+      reviews: json['reviews'].map((e) => ReviewModel.fromJson(e)).toList(),
+
+
+
+
+    );
+  }
+
+  toEntity(){
+    return {
+      'expirationsOfMonths': expirationsOfMonths,
+      'isOrganic': isOrganic,
+      'numberOfCalories': numberOfCalories,
+      'unitsAmount': unitsAmount,
+      'productName': productName,
+      'description': description,
+      'productCode': productCode,
+      'price': price,
+      'isFeatured': isFeatured,
+      'imageUrl': imageUrl,
+      'reviews': reviews.map((e) => e.toEntity()).toList(),
+      'sellingCount': sellingCount,
+
+    };
   }
 
   toJson() {
