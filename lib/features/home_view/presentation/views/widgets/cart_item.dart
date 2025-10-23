@@ -49,11 +49,16 @@ class CartItem extends StatelessWidget {
                 ),
 
                 Row(
-                    children: [
-                      CartItemActionButton(),
-                      Spacer(),
-                      Text('60 جنيه',style: AppTextStyles.bold16.copyWith(color: AppColors.secondaryColor),)
-                    ]
+                  children: [
+                    CartItemActionButton(),
+                    Spacer(),
+                    Text(
+                      '60 جنيه',
+                      style: AppTextStyles.bold16.copyWith(
+                        color: AppColors.secondaryColor,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
