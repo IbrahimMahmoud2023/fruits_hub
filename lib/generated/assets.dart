@@ -29,6 +29,7 @@ class Assets {
   static const String imagesPlant = 'assets/images/plant.png';
   static const String imagesSplashCircle = 'assets/images/splash_circle.png';
   static const String imagesTestImag = 'assets/images/test_imag.png';
+  static const String imagesTrash = 'assets/images/trash.png';
   static const String outlineElement3 = 'assets/images/outline/element-3.png';
   static const String outlineHome = 'assets/images/outline/home.png';
   static const String outlineShoppingCart = 'assets/images/outline/shopping-cart.png';

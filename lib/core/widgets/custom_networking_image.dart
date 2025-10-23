@@ -10,6 +10,6 @@ class CustomNetWorkingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(image, height: 80, width: 80);
+    return Image.network(image, height: 50, width: 50);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/cart_header.dart';
+import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/cart_item.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/build_app_bar.dart';
 
@@ -24,6 +25,8 @@ class CartViewBody extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 CartHeader(),
+                SizedBox(height: 16),
+                CartItem()
               ],
             ),
           ),
