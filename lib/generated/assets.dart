@@ -13,6 +13,7 @@ class Assets {
   static const String imagesAppleIcon = 'assets/images/apple_icon.png';
   static const String imagesFacebookIcon = 'assets/images/facebook_icon.png';
   static const String imagesFeaturedItemBackground = 'assets/images/featured_item_background.png';
+  static const String imagesFliter2 = 'assets/images/fliter2.png';
   static const String imagesFliterIcon = 'assets/images/fliter_icon.png';
   static const String imagesFruitsIcon = 'assets/images/fruits_icon.png';
   static const String imagesGoogleIcon = 'assets/images/google_icon.png';

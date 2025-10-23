@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
 
-
 import '../entites/product_entity.dart';
 import 'custom_networking_image.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
-final ProductEntity productEntity ;
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,16 +30,19 @@ final ProductEntity productEntity ;
             child: Column(
               children: [
                 SizedBox(height: 20),
-                productEntity.imageUrl != null ?
-                Flexible(child: CustomNetWorkingImage(image: productEntity.imageUrl!))
-                    :Container(
-                  color: Colors.grey,
-                  height: 100,
-                  width: 100,
-                ),
+                productEntity.imageUrl != null
+                    ? Flexible(
+                        child: CustomNetWorkingImage(
+                          image: productEntity.imageUrl!,
+                        ),
+                      )
+                    : Container(color: Colors.grey, height: 100, width: 100),
                 SizedBox(height: 24),
                 ListTile(
-                  title: Text(productEntity.productName, style: AppTextStyles.semibold16),
+                  title: Text(
+                    productEntity.productName,
+                    style: AppTextStyles.semibold16,
+                  ),
                   subtitle: Text.rich(
                     TextSpan(
                       children: [
@@ -78,5 +80,3 @@ final ProductEntity productEntity ;
     );
   }
 }
-
-

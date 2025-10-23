@@ -1,28 +1,26 @@
-import 'package:flutter/material.dart' ;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:fruits_ecommerec/core/widgets/custom_app_bar.dart';
+import 'package:fruits_ecommerec/features/product_view/presentation/views/widgets/products_view_header.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/cubits/products_cubit/products_cubit.dart';
+import '../../../../../core/widgets/build_app_bar.dart';
 import '../../../../../core/widgets/custom_search_icon.dart';
-import 'product_grad_view_bloc_builder.dart';
-import 'best_selling_header.dart';
-import 'custom_home_app_bar.dart';
-import 'featured_list_item.dart';
+import '../../../../home_view/presentation/views/widgets/product_grad_view_bloc_builder.dart';
+import '../../../../home_view/presentation/views/widgets/custom_home_app_bar.dart';
 
-class HomeViewBody extends StatefulWidget {
-  const HomeViewBody({
-    super.key,
-  });
+class ProductViewBody extends StatefulWidget {
+  const ProductViewBody({super.key});
 
   @override
-  State<HomeViewBody> createState() => _HomeViewBodyState();
+  State<ProductViewBody> createState() => _ProductViewBodyState();
 }
 
-class _HomeViewBodyState extends State<HomeViewBody> {
+class _ProductViewBodyState extends State<ProductViewBody> {
 
   @override
   void initState() {
-    BlocProvider.of<ProductsCubit>(context).getBestSellingProducts();
+    BlocProvider.of<ProductsCubit>(context).getProducts();
     super.initState();
   }
   @override
@@ -35,7 +33,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             child: Column(
               children: [
                 SizedBox(height: 16),
-                CustomHomeAppBar(),
+               buildAppBar(context, title: 'المنتجات',isBack: false),
                 SizedBox(height: 16),
 
                 Padding(
@@ -45,11 +43,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   child: CustomSearchIcon(),
                 ),
                 SizedBox(height: 12),
-                FeaturedListItem(),
-                SizedBox(height: 12),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: BestSellingHeader(),),
+                  padding:  EdgeInsets.all(8.0),
+                  child: ProductViewHeader(
+                    productLength: context.read<ProductsCubit>().productLength,
+                  ),),
                 const SizedBox(
                   height: 8,
                 )
@@ -62,4 +60,3 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     );
   }
 }
-

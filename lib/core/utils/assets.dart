@@ -36,4 +36,5 @@ class Assets {
   static const String outlineShoppingCart =
       'assets/images/outline/shopping-cart.png';
   static const String outlineUser = 'assets/images/outline/user.png';
+  static const String imagesFliter2 = 'assets/images/fliter2.png';
 }
