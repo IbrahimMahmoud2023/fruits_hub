@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_style_text.dart';
 import 'notification_widget.dart';
 
-AppBar buildAppBar( BuildContext context,{required String title,bool isBack = true}) {
+AppBar buildAppBar( BuildContext context,{required String title,bool isBack = true,bool isNotification = true}) {
   return AppBar(
     automaticallyImplyLeading: false,
     leading: Visibility(
@@ -16,9 +16,12 @@ AppBar buildAppBar( BuildContext context,{required String title,bool isBack = tr
       ),
     ),
     actions: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: NotificationWidget(),
+      Visibility(
+        visible: isNotification,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: NotificationWidget(),
+        ),
       )
     ],
     backgroundColor: Colors.transparent,

@@ -3,6 +3,8 @@ import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/c
 import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/home_view.dart';
 import 'package:fruits_ecommerec/features/product_view/presentation/views/product_view.dart';
 
+import 'cart_view.dart';
+
 class MainView extends StatefulWidget {
   const MainView({super.key});
   static const String routeName = 'main_view';
@@ -27,7 +29,7 @@ class _MainViewState extends State<MainView> {
       body: SafeArea(
         child: IndexedStack(
           index: currentIndex,
-          children: [HomeView(), ProductView()],
+          children: [HomeView(), ProductView(), CartView()],
         ),
       ),
     );
