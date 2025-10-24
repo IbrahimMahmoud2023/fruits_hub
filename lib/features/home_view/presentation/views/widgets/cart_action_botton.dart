@@ -14,15 +14,18 @@ class CartActionButton extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 24,
-      height: 24,
-      padding: EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(100),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 24,
+        height: 24,
+        padding: EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: FittedBox(child: Icon(iconData, color: iconColor)),
       ),
-      child: FittedBox(child: Icon(iconData, color: iconColor)),
     );
   }
 }

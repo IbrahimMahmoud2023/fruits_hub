@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
 import 'package:fruits_ecommerec/core/widgets/custom_networking_image.dart';
@@ -7,12 +8,24 @@ import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/c
 
 import '../../../../../core/utils/assets.dart';
 import '../../../domain/entites/cart_item_entity.dart';
+import '../../cubits/cart_cubit/cart_cubit.dart';
+import '../../cubits/cart_item/cart_item_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartItemEntity});
   final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<CartItemCubit, CartItemState>(
+      buildWhen: (previous, current) {
+        if(current is CartItemUpdated){
+          if(current.cartItemEntity == cartItemEntity){
+            return true;
+          }
+        }
+        return false;
+      },
+  builder: (context, state) {
     return IntrinsicHeight(
       child: Row(
         children: [
@@ -33,7 +46,9 @@ class CartItem extends StatelessWidget {
                     Text(cartItemEntity.productEntity.productName, style: AppTextStyles.bold13),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        context.read<CartCubit>().deleteItemProduct(cartItemEntity);
+                      },
                       child: Image.asset(
                         Assets.imagesTrash,
                         width: 30,
@@ -51,7 +66,9 @@ class CartItem extends StatelessWidget {
 
                 Row(
                   children: [
-                    CartItemActionButton(),
+                    CartItemActionButton(
+                      cartItemEntity: cartItemEntity,
+                    ),
                     Spacer(),
                     Text(
                       '${cartItemEntity.calculateTotalPrice()} جنيه',
@@ -67,5 +84,7 @@ class CartItem extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }

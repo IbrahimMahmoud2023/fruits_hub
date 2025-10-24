@@ -20,6 +20,9 @@ class MainViewBodyBlocConsumer extends StatelessWidget {
         if(state is CartItemAdded){
           showSnackBar(context, 'تم أضافه المنتج بنجاح', Colors.green);
         }
+        if(state is CartItemRemoved){
+          showSnackBar(context, 'تم حذف المنتج  بنجاح', Colors.green);
+        }
       },
       child: MainViewBody(currentIndex: currentIndex),
     );
