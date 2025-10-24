@@ -6,10 +6,11 @@ import 'package:fruits_ecommerec/core/widgets/custom_networking_image.dart';
 import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/cart_item_action_buttom.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../domain/entites/cart_item_entity.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key, required this.cartItemEntity});
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -19,7 +20,7 @@ class CartItem extends StatelessWidget {
             height: 92,
             width: 73,
             decoration: BoxDecoration(color: Color(0xFFF3F5F7)),
-            child: CustomNetWorkingImage(image: Assets.imagesAppleIcon),
+            child: CustomNetWorkingImage(image: cartItemEntity.productEntity.imageUrl!),
           ),
           SizedBox(width: 17),
           Expanded(
@@ -29,7 +30,7 @@ class CartItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('بطيخ', style: AppTextStyles.bold13),
+                    Text(cartItemEntity.productEntity.productName, style: AppTextStyles.bold13),
                     Spacer(),
                     GestureDetector(
                       onTap: () {},
@@ -42,7 +43,7 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '3 كم',
+                  '${cartItemEntity.calculateTotalWeight()} كم',
                   style: AppTextStyles.regular13.copyWith(
                     color: AppColors.secondaryColor,
                   ),
@@ -53,7 +54,7 @@ class CartItem extends StatelessWidget {
                     CartItemActionButton(),
                     Spacer(),
                     Text(
-                      '60 جنيه',
+                      '${cartItemEntity.calculateTotalPrice()} جنيه',
                       style: AppTextStyles.bold16.copyWith(
                         color: AppColors.secondaryColor,
                       ),
