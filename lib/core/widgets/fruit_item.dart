@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/core/utils/app_colors.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
+import '../../features/home_view/domain/entites/cart_item_entity.dart';
+import '../../features/home_view/presentation/cubits/cart_cubit/cart_cubit.dart';
 import '../entites/product_entity.dart';
 import 'custom_networking_image.dart';
 
@@ -67,9 +70,14 @@ class FruitItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  trailing: CircleAvatar(
-                    backgroundColor: AppColors.primaryColor,
-                    child: Icon(Icons.add, color: Colors.white),
+                  trailing: GestureDetector(
+                    onTap: (){
+                      context.read<CartCubit>().addProduct(productEntity);
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.primaryColor,
+                      child: Icon(Icons.add, color: Colors.white),
+                    ),
                   ),
                 ),
               ],
