@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/features/home_view/domain/entites/cart_entity.dart';
 import '../../../../../core/entites/product_entity.dart';
+import '../../../domain/entites/cart_item_entity.dart';
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
@@ -19,6 +20,11 @@ class CartCubit extends Cubit<CartState> {
       cartItemEntity.decreaseCount();
       cartEntity.addItemToCart(cartItemEntity);
     }
-    emit(CartAddedItem());
+    emit(CartItemAdded());
+  }
+
+  void deleteItemProduct(CartItemEntity cartItem){
+    cartEntity.cartItems.remove(cartItem);
+    emit(CartItemRemoved());
   }
 }

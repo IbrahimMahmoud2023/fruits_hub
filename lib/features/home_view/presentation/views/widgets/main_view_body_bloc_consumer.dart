@@ -17,7 +17,7 @@ class MainViewBodyBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
-        if(state is CartAddedItem){
+        if(state is CartItemAdded){
           showSnackBar(context, 'تم أضافه المنتج بنجاح', Colors.green);
         }
       },

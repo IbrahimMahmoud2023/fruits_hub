@@ -6,6 +6,7 @@ import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/c
 import '../../../../../core/widgets/build_app_bar.dart';
 import 'cart_ltem_list.dart';
 
+
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
 
@@ -36,7 +37,7 @@ class CartViewBody extends StatelessWidget {
               child: context.read<CartCubit>().cartEntity.cartItems.isEmpty? SizedBox(): CustomDivider(),
             ),
             CartItemList(
-              cartItems: [],
+              cartItems: context.read<CartCubit>().cartEntity.cartItems
             ),
             SliverToBoxAdapter(
               child: context.read<CartCubit>().cartEntity.cartItems.isEmpty? SizedBox(): CustomDivider(),
@@ -47,7 +48,7 @@ class CartViewBody extends StatelessWidget {
           bottom: MediaQuery.sizeOf(context).height *0.04,
             left: 16,
             right: 16,
-            child: CustomButton(text: 'الدفع  120جنيه',onPressed: (){},))
+            child: CustomButton(text: 'الدفع  ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()}  جنيه',onPressed: (){},))
       ],
     );
   }

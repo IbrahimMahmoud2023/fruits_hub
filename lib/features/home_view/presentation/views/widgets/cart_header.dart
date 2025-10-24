@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
+
+import '../../cubits/cart_cubit/cart_cubit.dart';
 
 class CartHeader extends StatelessWidget {
   const CartHeader({super.key});
@@ -13,7 +16,7 @@ class CartHeader extends StatelessWidget {
         color: Color(0xFFEBF9F1)
       ),
       child: Center(
-        child: Text('لديك 3 منتجات في سله التسوق',style: AppTextStyles.semibold13.copyWith(
+        child: Text('لديك ${context.watch<CartCubit>().cartEntity.cartItems.length} منتجات في سله التسوق',style: AppTextStyles.semibold13.copyWith(
           color: Color(0xFF1B5E37)
         ),),
       ),

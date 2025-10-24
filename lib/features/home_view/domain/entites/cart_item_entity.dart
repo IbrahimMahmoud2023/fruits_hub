@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:fruits_ecommerec/core/entites/product_entity.dart';
 
-class CartItemEntity {
+class CartItemEntity extends Equatable {
   final ProductEntity productEntity;
   int countProduct;
 
@@ -23,4 +24,8 @@ class CartItemEntity {
       countProduct--;
     }
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [productEntity];
 }
