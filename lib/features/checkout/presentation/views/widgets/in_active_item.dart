@@ -4,8 +4,8 @@ import '../../../../../core/utils/app_style_text.dart';
 
 class InActiveStepItem extends StatelessWidget {
   const InActiveStepItem({super.key,required this.title,required this.index});
-final String title;
-final int index;
+final String title ,index;
+
   @override
   Widget build(BuildContext context) {
     return Row(
