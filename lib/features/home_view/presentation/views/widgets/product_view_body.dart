@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_ecommerec/core/widgets/custom_app_bar.dart';
-import 'package:fruits_ecommerec/features/product_view/presentation/views/widgets/products_view_header.dart';
+import 'package:fruits_ecommerec/features/home_view/presentation/views/widgets/products_view_header.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/cubits/products_cubit/products_cubit.dart';
 import '../../../../../core/widgets/build_app_bar.dart';
 import '../../../../../core/widgets/custom_search_icon.dart';
 import '../../../../home_view/presentation/views/widgets/product_grad_view_bloc_builder.dart';
-import '../../../../home_view/presentation/views/widgets/custom_home_app_bar.dart';
 
 class ProductViewBody extends StatefulWidget {
   const ProductViewBody({super.key});
