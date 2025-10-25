@@ -26,6 +26,6 @@ class CheckoutSteps extends StatelessWidget {
       'الشحن',
       'العنوان',
       'الدفع',
-      'المراجعه'
+
     ];
   }
