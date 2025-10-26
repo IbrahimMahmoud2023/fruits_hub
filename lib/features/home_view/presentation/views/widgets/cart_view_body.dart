@@ -50,7 +50,9 @@ class CartViewBody extends StatelessWidget {
           bottom: MediaQuery.sizeOf(context).height *0.04,
             left: 16,
             right: 16,
-            child: CustomButtonCard())
+            child: CustomButtonCard(
+
+            ))
       ],
     );
   }

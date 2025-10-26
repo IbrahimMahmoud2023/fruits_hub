@@ -47,7 +47,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
 
           CustomButton(text: getStepTitle(currentPageIndex), onPressed: (){
-            pageController.animateToPage(currentPageIndex+1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+            pageController.animateToPage(currentPageIndex+1, duration: Duration(milliseconds: 100), curve: Curves.bounceIn);
           },),
           SizedBox(height: 30),
         ],
