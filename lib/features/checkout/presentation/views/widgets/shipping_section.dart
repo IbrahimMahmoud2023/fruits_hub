@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/shipping_item.dart';
+
+import '../../../../home_view/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key,});
@@ -29,7 +32,7 @@ class _ShippingSectionState extends State<ShippingSection> {
             isSelected: selectedIndex == 0 ? true : false,
             title: 'الدفع عند الاستلام',
             subTitle: 'التسليم من المكان',
-            price: '40 جنيه',
+            price:  (context.read<CartCubit>().cartEntity.calculateTotalPrice() + 40).toString(),
           ),
         ),
         SizedBox(
@@ -45,7 +48,7 @@ class _ShippingSectionState extends State<ShippingSection> {
           isSelected: selectedIndex == 1 ? true : false,
           title: 'الدفع أونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
-          price: 'مجاني',
+          price: context.read<CartCubit>().cartEntity.calculateTotalPrice().toString(),
         ),
       ],
     );
