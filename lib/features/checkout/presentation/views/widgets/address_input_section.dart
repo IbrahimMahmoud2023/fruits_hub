@@ -16,6 +16,7 @@ class AddressInputSection extends StatelessWidget {
         valueListenable: valueListenable,
         builder: (context, value, child) => Form(
           key: formKey,
+          autovalidateMode: value,
           child: Column(
             children: [
               SizedBox(height: 24),

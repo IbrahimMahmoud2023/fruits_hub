@@ -65,7 +65,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             onPressed: () {
               if (currentPageIndex == 0) {
                 _handleShippingSectionValidation(context);
-              } else if (currentPageIndex == 1) {}
+              } else if (currentPageIndex == 1) {
+                _handleAddressValidation();
+
+              }
             },
           ),
           SizedBox(height: 30),
@@ -81,7 +84,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         duration: Duration(milliseconds: 100),
         curve: Curves.bounceIn,
       );
-      _handleAddressValidation();
+
     } else {
       showSnackBar(context, 'يرجي تحديد طريقه للدفع', Colors.red);
     }
@@ -110,6 +113,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       );
     }else {
       valueNotifier.value = AutovalidateMode.always;
+
     }
   }
 }
