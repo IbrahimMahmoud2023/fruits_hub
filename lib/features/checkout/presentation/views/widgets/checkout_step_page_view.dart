@@ -1,18 +1,18 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/address_input_section.dart';
-import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/shipping_section.dart';
 
 class CheckOutStepPageView extends StatelessWidget {
   const CheckOutStepPageView({
     super.key,
-    required this.pageController,
+    required this.pageController, required this.formKey, required this.valueListenable,
   });
-
+  final ValueListenable<AutovalidateMode> valueListenable;
+  final GlobalKey<FormState> formKey;
   final PageController pageController;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,13 +28,17 @@ class CheckOutStepPageView extends StatelessWidget {
       ),
     );
   }
-}
-
 List<Widget> getPages() {
   return [
     ShippingSection(),
-    AddressInputSection(),
+    AddressInputSection(
+      formKey: formKey,
+      valueListenable: valueListenable,
+
+    ),
     PaymentSection(),
 
   ];
 }
+}
+

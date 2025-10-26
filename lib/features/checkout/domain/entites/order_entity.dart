@@ -3,7 +3,7 @@ import 'package:fruits_ecommerec/features/home_view/domain/entites/cart_entity.d
 
 class OrderEntity {
   final CartEntity cartEntity ;
-  final AddressShipping? addressShipping;
+   AddressShipping? addressShipping  = AddressShipping() ;
    bool? payWithCash ;
 
   OrderEntity({required this.cartEntity, this.payWithCash, this.addressShipping});

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
@@ -6,8 +5,9 @@ import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.d
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController});
+  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController, required this.formKey});
 final int currentPageIndex ;
+final GlobalKey<FormState> formKey ;
 final PageController pageController;
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,17 @@
 class AddressShipping {
-  final String name;
-  final String email;
-  final String address;
-  final String address2;
-  final String city;
-  final String phone;
+   String ? name;
+   String? email;
+   String? address;
+   String? address2;
+   String? city;
+   String? phone;
 
   AddressShipping({
-    required this.name,
-    required this.email,
-    required this.address,
-    required this.address2,
-    required this.city,
-    required this.phone,
+     this.name,
+     this.email,
+     this.address,
+     this.address2,
+     this.city,
+     this.phone,
   });
 }
