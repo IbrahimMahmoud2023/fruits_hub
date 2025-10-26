@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/core/widgets/custom_button.dart';
+import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
+import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
 import '../../../../../constants.dart';
 import 'checkout_step_page_view.dart';
 import 'checkout_steps.dart';
@@ -31,6 +34,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     pageController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,34 +46,38 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
-          Expanded(
-            child: CheckOutStepPageView(pageController: pageController),
-          ),
+          Expanded(child: CheckOutStepPageView(pageController: pageController)),
 
-          CustomButton(text: getStepTitle(currentPageIndex), onPressed: (){
-            pageController.animateToPage(currentPageIndex+1, duration: Duration(milliseconds: 100), curve: Curves.bounceIn);
-          },),
+          CustomButton(
+            text: getStepTitle(currentPageIndex),
+            onPressed: () {
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(
+                  currentPageIndex + 1,
+                  duration: Duration(milliseconds: 100),
+                  curve: Curves.bounceIn,
+                );
+              } else {
+                showSnackBar(context, 'يرجي تحديد طريقه للدفع', Colors.red);
+              }
+            },
+          ),
           SizedBox(height: 30),
         ],
       ),
     );
   }
-String getStepTitle(currentPageIndex) {
-  switch (currentPageIndex) {
-    case 0 :
-   return 'التالي';
-    case 1 :
-   return 'التالي';
-    case 2 :
-   return 'الدفع عبر PayPal';
-    default :
-   return 'التالي';
 
+  String getStepTitle(currentPageIndex) {
+    switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع عبر PayPal';
+      default:
+        return 'التالي';
+    }
   }
 }
-}
-
-
-
-
-

@@ -1,4 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
+import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
@@ -7,12 +11,18 @@ final int currentPageIndex ;
 final PageController pageController;
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: List.generate(getSteps().length, (index){
         return Expanded(
           child: GestureDetector(
             onTap: (){
-              pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+              }else {
+                showSnackBar(context, 'يرجي تحديد طريقه للدفع', Colors.red);
+              }
+
             },
             child: StepItem(
               isActive: index <= currentPageIndex ,

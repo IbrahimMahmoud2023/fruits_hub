@@ -61,7 +61,7 @@ class ShippingItem extends StatelessWidget {
                 const Spacer(),
                 Center(
                   child: Text(
-                    price,
+                    '$price جنيه',
                     style: AppTextStyles.bold13.copyWith(
                       color: AppColors.lightPrimaryColor,
                     ),
