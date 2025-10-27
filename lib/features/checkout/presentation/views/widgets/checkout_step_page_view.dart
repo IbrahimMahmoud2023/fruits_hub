@@ -36,7 +36,9 @@ List<Widget> getPages() {
       valueListenable: valueListenable,
 
     ),
-    PaymentSection(),
+    PaymentSection(
+      pageController: pageController,
+    ),
 
   ];
 }

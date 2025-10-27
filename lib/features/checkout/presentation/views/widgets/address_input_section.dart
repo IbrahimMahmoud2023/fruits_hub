@@ -54,7 +54,7 @@ class AddressInputSection extends StatelessWidget {
               SizedBox(height: 16),
               CustomTextFormFiled(
                 onSaved: (value){
-                  context.read<OrderEntity>().addressShipping!.address2 = value;
+                  context.read<OrderEntity>().addressShipping!.floor = value;
                 },
                 textInputType: TextInputType.number,
                 hintText: 'رقم الطابق , رقم الشقه ..',

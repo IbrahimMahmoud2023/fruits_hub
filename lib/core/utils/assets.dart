@@ -38,4 +38,9 @@ class Assets {
   static const String outlineUser = 'assets/images/outline/user.png';
   static const String imagesFliter2 = 'assets/images/fliter2.png';
   static const String imagesTrash = 'assets/images/trash.png';
+
+  static const String imagesLocation = 'assets/images/location.png';
+  static const String editImages = 'assets/images/edit_image.png';
+
+
 }

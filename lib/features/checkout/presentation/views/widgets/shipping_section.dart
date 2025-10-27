@@ -32,7 +32,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
             subTitle: 'التسليم من المكان',
             price:
                 (context.read<OrderEntity>().cartEntity.calculateTotalPrice() +
-                        40)
+                        30)
                     .toString(),
           ),
         ),

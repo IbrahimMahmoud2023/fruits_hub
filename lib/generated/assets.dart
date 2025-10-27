@@ -21,6 +21,7 @@ class Assets {
   static const String imagesIconNotification = 'assets/images/icon_notification.png';
   static const String imagesIconSearch = 'assets/images/icon_search.png';
   static const String imagesImageProfile = 'assets/images/image_profile.png';
+  static const String imagesLocation = 'assets/images/location.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesPageViewItem1BackgroundImage = 'assets/images/page_view_item1_background_image.png';
   static const String imagesPageViewItem1Image = 'assets/images/page_view_item1_image.png';
@@ -34,5 +35,7 @@ class Assets {
   static const String outlineHome = 'assets/images/outline/home.png';
   static const String outlineShoppingCart = 'assets/images/outline/shopping-cart.png';
   static const String outlineUser = 'assets/images/outline/user.png';
+
+  static const String editImages = 'assets/images/edit_image.png';
 
 }

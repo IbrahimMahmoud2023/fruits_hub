@@ -2,7 +2,7 @@ class AddressShipping {
    String ? name;
    String? email;
    String? address;
-   String? address2;
+   String? floor;
    String? city;
    String? phone;
 
@@ -10,8 +10,14 @@ class AddressShipping {
      this.name,
      this.email,
      this.address,
-     this.address2,
+     this.floor,
      this.city,
      this.phone,
   });
+
+  @override
+  String toString() {
+
+     return '$address, floor: $floor, city: $city ';
+  }
 }
