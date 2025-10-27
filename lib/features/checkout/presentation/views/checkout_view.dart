@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_ecommerec/core/helper_function/get_user.dart';
 import 'package:fruits_ecommerec/core/widgets/build_app_bar.dart';
 import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/checkout_view_body.dart';
@@ -16,7 +17,9 @@ final CartEntity cartEntity ;
     return Scaffold(
       appBar: buildAppBar(context, title: 'الشحن' , isNotification: false),
       body: Provider.value(
-        value: OrderEntity(cartEntity:  cartEntity, addressShipping: AddressShipping()),
+        value: OrderEntity(
+            uId: getUser().uId,
+            cartEntity:  cartEntity, addressShipping: AddressShipping()),
           child: CheckoutViewBody()),
     );
   }

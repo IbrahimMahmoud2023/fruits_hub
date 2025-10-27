@@ -27,7 +27,7 @@ final CartItemEntity cartItemEntity;
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(cartItemEntity.countProduct.toString(), style: AppTextStyles.bold16),
+          child: Text(cartItemEntity.quantity.toString(), style: AppTextStyles.bold16),
         ),
         CartActionButton(
           iconData: Icons.remove,

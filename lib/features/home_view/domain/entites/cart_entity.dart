@@ -38,6 +38,6 @@ class CartEntity {
         return cartItem;
       }
     }
-    return CartItemEntity(productEntity: product, countProduct: 1);
+    return CartItemEntity(productEntity: product, quantity: 1);
   }
 }
