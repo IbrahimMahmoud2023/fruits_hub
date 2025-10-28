@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -54,6 +53,28 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         children: [
           SizedBox(height: 20),
           CheckoutSteps(
+            onTap: (index) {
+              if (currentPageIndex == 0) {
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.bounceIn,
+                );
+              } else if (index == 1) {
+                var orderEntity = context.read<OrderEntity>();
+                if (orderEntity.payWithCash != null) {
+                  pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.bounceIn,
+                  );
+                } else {
+                  showSnackBar(context, 'يرجي تحديد طرق الدفع', Colors.red);
+                }
+              } else {
+                _handleAddressValidation();
+              }
+            },
             formKey: _formKey,
             pageController: pageController,
             currentPageIndex: currentPageIndex,
@@ -130,6 +151,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       orderEntity,
     );
     log(paypalPaymentEntity.toJson().toString());
+    var addProductCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
@@ -142,6 +164,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           onSuccess: (Map params) async {
             Navigator.pop(context);
             showSnackBar(context, 'تمت عمليه الدفع بنجاح', Colors.green);
+            await addProductCubit.addOrder(orderEntity);
           },
           onError: (error) {
             print("onError: $error");

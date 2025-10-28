@@ -5,10 +5,12 @@ import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.d
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController, required this.formKey});
+  const CheckoutSteps({super.key, required this.currentPageIndex, required this.pageController, required this.formKey, required this.onTap});
 final int currentPageIndex ;
 final GlobalKey<FormState> formKey ;
 final PageController pageController;
+
+final ValueChanged<int> onTap;
   @override
   Widget build(BuildContext context) {
 
@@ -17,11 +19,7 @@ final PageController pageController;
         return Expanded(
           child: GestureDetector(
             onTap: (){
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(index, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
-              }else {
-                showSnackBar(context, 'يرجي تحديد طريقه للدفع', Colors.red);
-              }
+              onTap(index);
 
             },
             child: StepItem(
