@@ -31,7 +31,7 @@ class OrderEntity {
   }
 
   String getCurrency(){
-    return 'EGP';
+    return 'USD';
   }
 
 }

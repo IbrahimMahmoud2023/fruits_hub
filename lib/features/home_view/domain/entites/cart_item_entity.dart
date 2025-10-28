@@ -26,7 +26,7 @@ class CartItemEntity extends Equatable {
   }
 
   String getCurrency(){
-    return 'EGP';
+    return 'USD';
   }
 
   @override

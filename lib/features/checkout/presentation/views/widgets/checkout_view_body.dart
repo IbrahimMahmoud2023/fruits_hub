@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_ecommerec/core/widgets/custom_button.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
 import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruits_ecommerec/features/paypal_payment_entity/paypal_payment_entity.dart';
 import '../../../../../constants.dart';
 import '../../manager/add_order_cubit/add_order_cubit.dart';
 import 'checkout_step_page_view.dart';
@@ -19,7 +22,9 @@ class CheckoutViewBody extends StatefulWidget {
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   int currentPageIndex = 0;
 
-  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(AutovalidateMode.disabled);
+  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(
+    AutovalidateMode.disabled,
+  );
 
   late PageController pageController;
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -68,7 +73,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 _handleShippingSectionValidation(context);
               } else if (currentPageIndex == 1) {
                 _handleAddressValidation();
-              }else {
+              } else {
                 // var orderEntity = context.read<OrderEntity>();
                 // context.read<AddOrderCubit>().addOrder(orderEntity);
                 _processPayment(context);
@@ -88,7 +93,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         duration: Duration(milliseconds: 100),
         curve: Curves.bounceIn,
       );
-
     } else {
       showSnackBar(context, 'يرجي تحديد طريقه للدفع', Colors.red);
     }
@@ -115,65 +119,40 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         duration: Duration(milliseconds: 100),
         curve: Curves.bounceIn,
       );
-    }else {
+    } else {
       valueNotifier.value = AutovalidateMode.always;
-
     }
   }
 
-  void _processPayment (context){
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) => PaypalCheckoutView(
-        sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: const [
-          {
-            "amount": {
-              "total": '70',
-              "currency": "USD",
-              "details": {
-                "subtotal": '70',
-                "shipping": '0',
-                "shipping_discount": 0
-              }
-            },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
-            "item_list": {
-              "items": [
-                {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '5',
-                  "currency": "USD"
-                },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '10',
-                  "currency": "USD"
-                }
-              ],
+  void _processPayment(context) {
+    var orderEntity = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.formEntity(
+      orderEntity,
+    );
+    log(paypalPaymentEntity.toJson().toString());
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => PaypalCheckoutView(
+          sandboxMode: true,
+          clientId: "",
+          secretKey: "",
+          transactions: [paypalPaymentEntity.toJson()],
 
-            }
-          }
-        ],
-        note: "Contact us for any questions on your order.",
-        onSuccess: (Map params) async {
-          print("onSuccess: $params");
-        },
-        onError: (error) {
-          print("onError: $error");
-          Navigator.pop(context);
-        },
-        onCancel: () {
-          print('cancelled:');
-        },
+          note: "Contact us for any questions on your order.",
+          onSuccess: (Map params) async {
+            Navigator.pop(context);
+            showSnackBar(context, 'تمت عمليه الدفع بنجاح', Colors.green);
+          },
+          onError: (error) {
+            print("onError: $error");
+            Navigator.pop(context);
+            showSnackBar(context, 'فشلت عمليه الدفع', Colors.red);
+          },
+          onCancel: () {
+            print('cancelled:');
+          },
+        ),
       ),
-    ));
+    );
   }
 }
