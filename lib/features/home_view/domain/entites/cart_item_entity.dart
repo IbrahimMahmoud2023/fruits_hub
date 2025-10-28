@@ -25,6 +25,10 @@ class CartItemEntity extends Equatable {
     }
   }
 
+  String getCurrency(){
+    return 'EGP';
+  }
+
   @override
   // TODO: implement props
   List<Object?> get props => [productEntity];
