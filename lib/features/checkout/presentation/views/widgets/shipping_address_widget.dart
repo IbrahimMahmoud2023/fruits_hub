@@ -4,7 +4,7 @@ import 'package:fruits_ecommerec/core/utils/app_style_text.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/payment_item.dart';
 
 import '../../../../../core/utils/assets.dart';
-import '../../../domain/entites/order_entity.dart';
+import '../../../domain/entites/order_input_entity.dart';
 
 class ShippingAddressWidget extends StatelessWidget {
   const ShippingAddressWidget({super.key, required this.pageController});
@@ -18,7 +18,7 @@ final PageController pageController;
           Image.asset(Assets.imagesLocation, width: 16, height: 16),
           SizedBox(width: 8),
           Text(
-            '${context.read<OrderEntity>().addressShipping}',
+            '${context.read<OrderInputEntity>().addressShipping}',
             style: AppTextStyles.regular13.copyWith(color: Color(0xFF4E5556)),
           ),
 

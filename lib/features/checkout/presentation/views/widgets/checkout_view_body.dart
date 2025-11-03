@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_ecommerec/core/widgets/custom_button.dart';
 import 'package:fruits_ecommerec/features/auth/presentation/views/widgets/show_snack_bar.dart';
-import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruits_ecommerec/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:fruits_ecommerec/features/paypal_payment_entity/paypal_payment_entity.dart';
 import '../../../../../constants.dart';
 import '../../manager/add_order_cubit/add_order_cubit.dart';
@@ -61,7 +61,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   curve: Curves.bounceIn,
                 );
               } else if (index == 1) {
-                var orderEntity = context.read<OrderEntity>();
+                var orderEntity = context.read<OrderInputEntity>();
                 if (orderEntity.payWithCash != null) {
                   pageController.animateToPage(
                     index,
@@ -108,7 +108,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _handleShippingSectionValidation(BuildContext context) {
-    if (context.read<OrderEntity>().payWithCash != null) {
+    if (context.read<OrderInputEntity>().payWithCash != null) {
       pageController.animateToPage(
         currentPageIndex + 1,
         duration: Duration(milliseconds: 100),
@@ -146,7 +146,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPayment(context) {
-    var orderEntity = context.read<OrderEntity>();
+    var orderEntity = context.read<OrderInputEntity>();
     PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.formEntity(
       orderEntity,
     );

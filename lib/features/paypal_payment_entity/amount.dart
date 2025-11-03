@@ -1,4 +1,4 @@
-import '../checkout/domain/entites/order_entity.dart';
+import '../checkout/domain/entites/order_input_entity.dart';
 import 'datails_entity.dart';
 
 class Amount {
@@ -12,7 +12,7 @@ class Amount {
     required this.details,
   });
 
-  factory Amount.fromEntity(OrderEntity entity){
+  factory Amount.fromEntity(OrderInputEntity entity){
     return Amount(
       total: entity.calculateTotalPriceAfterShippingAndDiscount().toString(),
       currency: entity.getCurrency(),

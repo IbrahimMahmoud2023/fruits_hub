@@ -1,5 +1,6 @@
 import 'package:fruits_ecommerec/features/checkout/data/models/address_model.dart';
-import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruits_ecommerec/features/checkout/domain/entites/order_input_entity.dart';
+import 'package:uuid/uuid.dart';
 
 import 'order_product_model.dart';
 
@@ -10,8 +11,10 @@ class OrderModel {
 
   final List<OrderProductModel> orderProductModel;
   final String paymentMethod;
+  final String orderId;
 
   OrderModel({
+    required this.orderId,
     required this.totalPrice,
     required this.uId,
     required this.addressModel,
@@ -19,8 +22,9 @@ class OrderModel {
     required this.paymentMethod,
   });
 
-  factory OrderModel.fromEntity(OrderEntity orderEntity) {
+  factory OrderModel.fromEntity(OrderInputEntity orderEntity) {
     return OrderModel(
+      orderId: Uuid().v4(),
       totalPrice: orderEntity.cartEntity.calculateTotalPrice().toDouble(),
       uId: orderEntity.uId,
       addressModel: AddressModel.fromEntity(orderEntity.addressShipping),
@@ -33,6 +37,7 @@ class OrderModel {
 
   toJson() {
     return {
+      'orderId': orderId,
       'totalPrice': totalPrice,
       'uId': uId,
       'status': 'pending',

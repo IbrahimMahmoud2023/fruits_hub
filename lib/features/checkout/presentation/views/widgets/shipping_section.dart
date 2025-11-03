@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_ecommerec/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruits_ecommerec/features/checkout/domain/entites/order_input_entity.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/shipping_item.dart';
 
 class ShippingSection extends StatefulWidget  {
@@ -15,7 +15,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    var orderEntity =context.read<OrderEntity>();
+    var orderEntity =context.read<OrderInputEntity>();
     return Column(
       children: [
         SizedBox(height: 33),
@@ -31,7 +31,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
             title: 'الدفع عند الاستلام',
             subTitle: 'التسليم من المكان',
             price:
-                (context.read<OrderEntity>().cartEntity.calculateTotalPrice() +
+                (context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() +
                         30)
                     .toString(),
           ),
@@ -48,7 +48,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
           title: 'الدفع أونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
           price: context
-              .read<OrderEntity>()
+              .read<OrderInputEntity>()
               .cartEntity
               .calculateTotalPrice()
               .toString(),

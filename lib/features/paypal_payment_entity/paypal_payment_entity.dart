@@ -1,4 +1,4 @@
-import '../checkout/domain/entites/order_entity.dart';
+import '../checkout/domain/entites/order_input_entity.dart';
 import 'amount.dart';
 import 'item_list.dart';
 
@@ -13,7 +13,7 @@ class PaypalPaymentEntity {
     required this.itemList,
   });
 
-  factory PaypalPaymentEntity.formEntity(OrderEntity entity){
+  factory PaypalPaymentEntity.formEntity(OrderInputEntity entity){
     return PaypalPaymentEntity(
       amount: Amount.fromEntity(entity),
       description: ' payment description.',

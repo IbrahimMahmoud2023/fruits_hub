@@ -1,4 +1,4 @@
-import '../checkout/domain/entites/order_entity.dart';
+import '../checkout/domain/entites/order_input_entity.dart';
 
 class DetailsEntity {
   final String subtotal;
@@ -21,7 +21,7 @@ class DetailsEntity {
   }
 
 
-  factory DetailsEntity.fromEntity(OrderEntity entity){
+  factory DetailsEntity.fromEntity(OrderInputEntity entity){
     return DetailsEntity(
         subtotal: entity.cartEntity.calculateTotalPrice().toString(),
         shipping:entity.calculateShippingCost().toString(),

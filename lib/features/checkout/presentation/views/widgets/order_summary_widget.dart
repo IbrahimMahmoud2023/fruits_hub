@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_ecommerec/features/checkout/presentation/views/widgets/payment_item.dart';
 
 import '../../../../../core/utils/app_style_text.dart';
-import '../../../domain/entites/order_entity.dart';
+import '../../../domain/entites/order_input_entity.dart';
 
 class OrderSummaryWidget extends StatelessWidget {
   const OrderSummaryWidget({
@@ -28,7 +28,7 @@ class OrderSummaryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه',
                 style: AppTextStyles.bold16.copyWith(
                   color: Color(0xFF0C0D0D),
                 ),
@@ -68,7 +68,7 @@ class OrderSummaryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
                 style: AppTextStyles.bold16.copyWith(  color: Color(0xFF0C0D0D),),
               ),
             ],
